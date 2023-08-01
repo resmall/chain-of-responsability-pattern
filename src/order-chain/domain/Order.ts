@@ -37,9 +37,6 @@ export class Order {
   public addItem(item: Item): void {
     this._items.push(item);
     this.calculateTotal();
-    console.log(
-      `Item ${item.name} added to order ${this._id}. Total: ${this._total}`
-    );
   }
 
   private calculateTotal(): void {

@@ -2,16 +2,17 @@ import { Order } from "../domain/Order";
 import { OrderHandler } from "./order.handler";
 
 function getDeliveryFee() {
-  return Math.floor(Math.random() * 10) + 1;
+  return 1;
 }
 
 export class FreeDeliveryHandler extends OrderHandler {
   handle(order: Order) {
-    if (order.total >= 100) {
-      console.log("Free delivery applied!");
-    } else {
-      const deliveryFee = getDeliveryFee();
+    const deliveryFee = getDeliveryFee();
+    if (order.total < 10) {
+      console.log(`+ $${deliveryFee} (Delivery fee applied)`);
       order.applyDeliveryFee(deliveryFee);
+    } else {
+      console.log(`- $0 (Free delivery)`);
     }
 
     return super.handle(order);

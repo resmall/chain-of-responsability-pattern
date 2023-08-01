@@ -4,11 +4,11 @@ import { OrderHandler } from "./order.handler";
 function getCouponDiscount(coupon: string) {
   switch (coupon) {
     case "10OFF":
-      return 10;
+      return 1;
     case "20OFF":
-      return 20;
+      return 2;
     case "30OFF":
-      return 30;
+      return 3;
     default:
       return 0;
   }
@@ -18,10 +18,10 @@ export class CouponHandler extends OrderHandler {
   handle(order: Order) {
     const couponDiscount = getCouponDiscount(order.coupon);
     if (order.coupon && couponDiscount > 0) {
-      console.log(`Coupon ${order.coupon} applied!`);
+      console.log(
+        `- $${couponDiscount} (Coupon discount ${order.coupon} applied)`
+      );
       order.applyDiscount(couponDiscount);
-    } else {
-      console.log(`No coupon applied ${order.coupon} ${couponDiscount > 0}`);
     }
 
     return super.handle(order);
