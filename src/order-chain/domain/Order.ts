@@ -51,6 +51,10 @@ export class Order {
     return this._items;
   }
 
+  public getItems(): Item[] {
+    return this._items;
+  }
+
   public get id(): string {
     return this._id;
   }

@@ -3,7 +3,7 @@ import { OrderHandler } from "./order.handler";
 
 export class HatItemDiscountHandler extends OrderHandler {
   handle(order: Order) {
-    if (order.items.some((item) => item.name === "Hat")) {
+    if (order.getItems().some((item) => item.name === "Hat")) {
       console.log(`- $1 (Hat item discount applied)`);
       order.applyDiscount(1);
     }
